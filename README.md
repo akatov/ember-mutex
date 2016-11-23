@@ -1,26 +1,39 @@
 # Ember-mutex
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status](https://travis-ci.org/akatov/ember-mutex.svg)](https://travis-ci.org/akatov/ember-mutex)
+[![Code Climate](https://codeclimate.com/github/akatov/ember-mutex/badges/gpa.svg)](https://codeclimate.com/github/akatov/ember-mutex)
+[![Test Coverage](https://codeclimate.com/github/akatov/ember-mutex/badges/coverage.svg)](https://codeclimate.com/github/akatov/ember-mutex/coverage)
+[![Issue Count](https://codeclimate.com/github/akatov/ember-mutex/badges/issue_count.svg)](https://codeclimate.com/github/akatov/ember-mutex)
+
+A simple mutex implementation using Ember (RSVP) Promises.
+This is pretty much a copy of https://github.com/plenluno/promise-mutex adjusted for Ember.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```bash
+ember install ember-mutex
+```
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```js
+import Mutex from 'ember-mutex';
+let mutex = Mutex.create();
+
+let sayHelloSynced = function() {
+  mutex.lock(function() {
+    return new Ember.RSVP.Promise(function(resolve) {
+      console.log('hello');
+      Ember.run.later(null, resolve, 1000);
+    });
+  });
+};
+sayHelloSynced(); // should print 'hello' immediately
+sayHelloSynced(); // will print 'hello' after 1000ms
+```
 
 ## Running Tests
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+```bash
+ember try:testall
+```

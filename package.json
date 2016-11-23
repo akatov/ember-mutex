@@ -1,7 +1,7 @@
 {
   "name": "ember-mutex",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A simple mutex implementation for Ember.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "akatov/ember-mutex",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Dmitri Akatov",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -40,7 +40,9 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-mutex",
+    "mutex"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"

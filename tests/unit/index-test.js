@@ -1,4 +1,4 @@
-import Mutex from 'dummy/utils/mutex';
+import Mutex from 'ember-mutex';
 import Ember from 'ember';
 import { module, test } from 'qunit';
 
